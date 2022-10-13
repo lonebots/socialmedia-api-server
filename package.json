@@ -1,0 +1,43 @@
+{
+  "name": "basic-rest-api",
+  "version": "1.0.0",
+  "description": "implementation of rest api basics using mongodb, nodejs and typescript",
+  "main": "src/app.ts",
+  "author": "jishnu",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon --config nodemon.json src/app.ts | pino-pretty"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "config": "^3.3.8",
+    "cors": "^2.8.5",
+    "dayjs": "^1.11.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.6.5",
+    "nanoid": "^4.0.0",
+    "nodemon": "^2.0.20",
+    "pino": "^8.6.1",
+    "pino-http": "^8.2.1",
+    "pino-pretty": "^9.1.1",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/body-parser": "^1.19.2",
+    "@types/config": "^3.3.0",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.14",
+    "@types/jsonwebtoken": "^8.5.9",
+    "@types/lodash": "^4.14.186",
+    "@types/mongoose": "^5.11.97",
+    "@types/nanoid": "^3.0.0",
+    "@types/node": "^18.8.5",
+    "@types/pino": "^7.0.5",
+    "@types/yup": "^0.32.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
+  }
+}
