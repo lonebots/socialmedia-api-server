@@ -6,7 +6,7 @@
   "author": "jishnu",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --config nodemon.json src/app.ts"
+    "dev": "nodemon --config nodemon.json src/app.ts | pino-pretty"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
