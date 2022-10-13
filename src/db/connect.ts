@@ -7,5 +7,10 @@ function connect() {
 
   return mongoose.connect(dbUri).then(() => {
     log.info("Database Connected");
+  }).catch((error)=>{
+    log.error("error : ",error);
+    process.exit(1);
   });
 }
+
+export default connect;
