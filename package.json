@@ -2,7 +2,7 @@
   "name": "basic-rest-api",
   "version": "1.0.0",
   "description": "implementation of rest api basics using mongodb, nodejs and typescript",
-  "main": "index.js",
+  "main": "src/app.ts",
   "author": "jishnu",
   "license": "MIT",
   "scripts": {
@@ -20,6 +20,7 @@
     "nanoid": "^4.0.0",
     "nodemon": "^2.0.20",
     "pino": "^8.6.1",
+    "pino-http": "^8.2.1",
     "pino-pretty": "^9.1.1",
     "yup": "^0.32.11"
   },
