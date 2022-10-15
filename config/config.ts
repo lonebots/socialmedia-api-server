@@ -3,6 +3,6 @@
 export default {
   port: 3000,
   host: "localhost",
-  dbUri:
-    "update_your_db_uri",
+  dbUri: "update_your_db_uri",
+  saltWorkFactor: 10,
 };
