@@ -38,6 +38,6 @@ app.listen(port, host, () => {
    // connect to database
    connect();
 
-   // add in the routes
+   // initialize the routes
    routes(app);
 });
