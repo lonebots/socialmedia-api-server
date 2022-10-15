@@ -3,6 +3,7 @@ import express from "express";
 import config from "config";
 import log from "./logger";
 import connect from "./db/connect";
+import routes from "./routes/routes";
 
 
 
@@ -34,5 +35,9 @@ app.get("/", (req, res) => {
 
 app.listen(port, host, () => {
    log.info(`server listening to : http://${host}:${port}`);
+   // connect to database
    connect();
+
+   // add in the routes
+   routes(app);
 });
