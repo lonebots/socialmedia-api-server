@@ -2,7 +2,7 @@
 import express from "express";
 import config from "config";
 import log from "./logger";
-import PinoPretty from "pino-pretty";
+import connect from "./db/connect";
 
 
 
@@ -34,4 +34,5 @@ app.get("/", (req, res) => {
 
 app.listen(port, host, () => {
    log.info(`server listening to : http://${host}:${port}`);
+   connect();
 });
