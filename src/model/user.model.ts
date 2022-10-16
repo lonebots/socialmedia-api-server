@@ -26,7 +26,7 @@ const UserSchema = new mongoose.Schema(
 );
 
 // userschema pre save method - to get the user password in to a hash
-UserSchema.pre("save", async function (next : mongoose.HookNextFunction) {
+UserSchema.pre("save", async function (next) {
   let user = this as UserDocument;
 
   // only hash the password if its been modified (or new)
