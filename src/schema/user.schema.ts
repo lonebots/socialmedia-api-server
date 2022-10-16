@@ -1,6 +1,7 @@
 // used for all the user endpoints
 import { object, string, ref } from "yup";
 
+// user creation
 export const createUserSchema = object({
   body: object({
     name: string().required("Name is required"),
@@ -17,3 +18,6 @@ export const createUserSchema = object({
       .email("Must be a valid email"),
   }),
 });
+
+// user session
+export const createSessionSchema = object()
