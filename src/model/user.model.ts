@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt"; // for creating password hash
 import config from "config";
-import { NextFunction } from "express";
 
 // since we are using typescript an interface is also required for the user
 export interface UserDocument extends mongoose.Document {
