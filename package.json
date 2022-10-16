@@ -9,6 +9,7 @@
     "dev": "nodemon --config nodemon.json src/app.ts | pino-pretty"
   },
   "dependencies": {
+    "@types/mongodb": "^4.0.7",
     "bcrypt": "^5.1.0",
     "config": "^3.3.8",
     "cors": "^2.8.5",
