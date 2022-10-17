@@ -4,7 +4,6 @@ import { get } from "lodash";
 import { UserDocument } from "../model/user.model";
 import Session, { SessionDocument } from "../model/session.model";
 import { sign } from "../utils/jwt.utils";
-import { findUser } from "./user.service";
 
 export async function createSession(userId: string, userAgent: string) {
   const session = await Session.create({ user: userId, userAgent });
@@ -17,9 +16,11 @@ export function createAccessToken({
   session,
 }: {
   user:
+    | any
     | Omit<UserDocument, "password">
     | LeanDocument<Omit<UserDocument, "password">>;
   session:
+    | any
     | Omit<SessionDocument, "password">
     | LeanDocument<Omit<SessionDocument, "password">>;
 }) {
