@@ -41,7 +41,7 @@ export async function reIssueAccessToken({
   // decode the refresh token
   const { decoded } = decode(refreshToken);
 
-  if (!decoded || get(decoded, "_id")) return false; // if decoded doesn't exist
+  if (!decoded || !get(decoded, "_id")) return false; // if decoded doesn't exist
 
   // find the user session
   const session = await Session.findById(get(decoded, "_id"));
@@ -57,4 +57,14 @@ export async function reIssueAccessToken({
   // create new accessToken and finally return it
   const accessToken = createAccessToken({user, session});
   return accessToken;
+}
+
+
+// update session
+// takes in generic type 1. query , 2 update
+export async function updateSession(
+  query: FilterQuery<SessionDocument>,
+  update: UpdateQuery<SessionDocument>
+) {
+  return Session.updateOne(query, update);
 }
