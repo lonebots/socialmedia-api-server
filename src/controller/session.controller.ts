@@ -8,6 +8,7 @@ import {
   updateSession,
 } from "../service/session.service";
 import { sign } from "../utils/jwt.utils";
+import log from "../logger";
 
 export async function createUserSessionHandler(req: Request, res: Response) {
   // validate the email and password
@@ -45,8 +46,11 @@ export async function invalidateUserSessionHandler(
   const sessionId = get(req, "user.session");
 
   // update session
-  await updateSession({ _id: sessionId }, { valid: false });
-
-  // return the status 200 : OK
-  return res.sendStatus(200);
+  try {
+    await updateSession({ _id: sessionId }, { valid: false });
+    // return the status 200 : OK
+    return res.sendStatus(200);
+  } catch (e: any) {
+    log.info(e);
+  }
 }
