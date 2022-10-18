@@ -3,7 +3,8 @@ import config from "config";
 import { get } from "lodash";
 import { UserDocument } from "../model/user.model";
 import Session, { SessionDocument } from "../model/session.model";
-import { sign } from "../utils/jwt.utils";
+import { sign, decode } from "../utils/jwt.utils";
+import { findUser } from "../service/user.service";
 
 export async function createSession(userId: string, userAgent: string) {
   const session = await Session.create({ user: userId, userAgent });
@@ -31,3 +32,29 @@ export function createAccessToken({
   return accessToken;
 }
 
+// reissueing the token
+export async function reIssueAccessToken({
+  refreshToken,
+}: {
+  refreshToken: string;
+}) {
+  // decode the refresh token
+  const { decoded } = decode(refreshToken);
+
+  if (!decoded || get(decoded, "_id")) return false; // if decoded doesn't exist
+
+  // find the user session
+  const session = await Session.findById(get(decoded, "_id"));
+
+  // make sure that it is still valid
+  if (!session || !session?.valid) return false;
+
+  // all pass - get the user
+  const user = await findUser({ _id: session.user });
+
+  if (!user) return false;
+
+  // create new accessToken and finally return it
+  const accessToken = createAccessToken({user, session});
+  return accessToken;
+}
