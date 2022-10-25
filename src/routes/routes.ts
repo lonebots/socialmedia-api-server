@@ -33,4 +33,29 @@ export default function (app: Express) {
 
   // user logout
   app.delete("api/sessions", requiresUser, invalidateUserSessionHandler);
+
+  //****POST SECTION ROUTES
+  // create post
+  app.post(
+    "/api/posts",
+    [requiresUser, validateRequest(createPostSchema)],
+    createPostHandler
+  );
+
+  // update post
+  app.put(
+    "/api/posts/:postId",
+    [requiresUser, validateRequest(updatePostSchema)],
+    updatePostHandler
+  );
+
+  // get post
+  app.get("/api/posts/:postId,", getPostHandler);
+
+  // delete post 
+  app.delete(
+    "/api/posts/:postId",
+    [requiresUser, validateRequest(deletePostSchema)],
+    deletePostHandler
+  );
 }
