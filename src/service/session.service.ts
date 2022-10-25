@@ -55,10 +55,9 @@ export async function reIssueAccessToken({
   if (!user) return false;
 
   // create new accessToken and finally return it
-  const accessToken = createAccessToken({user, session});
+  const accessToken = createAccessToken({ user, session });
   return accessToken;
 }
-
 
 // update session
 // takes in generic type 1. query , 2 update
@@ -67,4 +66,8 @@ export async function updateSession(
   update: UpdateQuery<SessionDocument>
 ) {
   return Session.updateOne(query, update);
+}
+
+export async function findSessions(query: FilterQuery<SessionDocument>) {
+  return Session.find(query).lean();
 }

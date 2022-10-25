@@ -6,6 +6,7 @@ import {
   createSession,
   createAccessToken,
   updateSession,
+  findSessions
 } from "../service/session.service";
 import { sign } from "../utils/jwt.utils";
 import log from "../logger";
@@ -53,4 +54,15 @@ export async function invalidateUserSessionHandler(
   } catch (e: any) {
     log.info(e);
   }
+}
+
+// for handling user session
+export async function getUserSessionsHandler(req: Request, res: Response) {
+  // get the user
+  const userId = get(req, "user._id");
+
+  // get the user session
+  const session = await findSessions({ user: userId, valid: true });
+
+  res.send(session);
 }

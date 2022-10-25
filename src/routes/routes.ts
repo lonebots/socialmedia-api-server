@@ -3,6 +3,7 @@ import { createUserHandler } from "../controller/user.controller";
 import {
   createUserSessionHandler,
   invalidateUserSessionHandler,
+  getUserSessionsHandler,
 } from "../controller/session.controller";
 import { validateRequest, requiresUser } from "../middleware";
 import {
@@ -28,6 +29,7 @@ export default function (app: Express) {
   );
 
   // user session
+  app.get("api/sessions", requiresUser, getUserSessionsHandler);
 
   // user logout
   app.delete("api/sessions", requiresUser, invalidateUserSessionHandler);
