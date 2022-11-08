@@ -58,17 +58,19 @@ export default function (app: Express) {
   // update post
   app.put(
     "/api/posts/:postId",
-    [requiresUser, validateRequest(updatePostSchema)],
+    requiresUser,
+    validateRequest(updatePostSchema),
     updatePostHandler
   );
 
   // get post
-  app.get("/api/posts/:postId,", getPostHandler);
+  app.get("/api/posts/:postId", getPostHandler);
 
   // delete post
   app.delete(
     "/api/posts/:postId",
-    [requiresUser, validateRequest(deletePostSChema)],
+    requiresUser,
+    validateRequest(deletePostSChema),
     deletePostHandler
   );
 }
