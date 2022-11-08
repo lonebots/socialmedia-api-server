@@ -41,10 +41,10 @@ export default function (app: Express) {
   );
 
   // user session
-  app.get("api/sessions", requiresUser, getUserSessionsHandler);
+  app.get("/api/sessions", requiresUser, getUserSessionsHandler);
 
   // user logout
-  app.delete("api/sessions", requiresUser, invalidateUserSessionHandler);
+  app.delete("/configapi/sessions", requiresUser, invalidateUserSessionHandler);
 
   //****POST SECTION ROUTES
   // create post
