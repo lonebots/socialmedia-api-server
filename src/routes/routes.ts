@@ -50,7 +50,8 @@ export default function (app: Express) {
   // create post
   app.post(
     "/api/posts",
-    [requiresUser, validateRequest(createPostSchema)],
+    requiresUser,
+    validateRequest(createPostSchema),
     createPostHandler
   );
 

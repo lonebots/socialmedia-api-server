@@ -12,7 +12,7 @@ const payload = {
     title: string().required("Title is required!"),
     body: string()
       .required("Body is required!")
-      .min(120, "Body is too short - minimum 120 characters required."),
+      .min(10, "Body is too short - minimum 10 characters required."),
   }),
 };
 

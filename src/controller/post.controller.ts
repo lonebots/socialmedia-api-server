@@ -11,14 +11,16 @@ import {
 export async function createPostHandler(req: Request, res: Response) {
   //requirement : userId, body
   const userId = get(req, "user._id");
+  if (!userId) {
+    console.log("error no userId");
+  }
   const body = req.body;
 
   // create the post using the service
   const post = await createPost({ ...body, user: userId });
 
   // send the post in response
-  return;
-  res.send(post);
+  return res.send(post);
 }
 
 // updating a post
