@@ -30,5 +30,4 @@ export const updatePostSchema = object({
 // deletePostSChema
 export const deletePostSChema = object({
   ...params,
-  ...payload,
 });
