@@ -44,7 +44,7 @@ export default function (app: Express) {
   app.get("/api/sessions", requiresUser, getUserSessionsHandler);
 
   // user logout
-  app.delete("/configapi/sessions", requiresUser, invalidateUserSessionHandler);
+  app.delete("/api/sessions", requiresUser, invalidateUserSessionHandler);
 
   //****POST SECTION ROUTES
   // create post
