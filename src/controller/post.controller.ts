@@ -44,12 +44,14 @@ export async function updatePostHandler(req: Request, res: Response) {
 
   // update the post
   const updatedPost = await findAndUpdate({ postId }, update, { new: true });
+  return res.send(updatedPost);
 }
 
 // getting a post
 export async function getPostHandler(req: Request, res: Response) {
   // required : postId,
   const postId = get(req, "params.postId");
+  console.log(postId);
 
   // get the post
   const post = await findPost({ postId });
@@ -57,6 +59,7 @@ export async function getPostHandler(req: Request, res: Response) {
   if (!post) {
     return res.sendStatus(404);
   }
+  console.log(post);
 
   return res.send(post);
 }
